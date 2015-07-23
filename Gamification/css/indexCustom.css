@@ -1,0 +1,96 @@
+/* CUSTOM CSS FOR INTRO PAGE */
+
+
+.indexbutton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 100px;
+}
+
+.section  {
+  padding: 15rem 0 15rem;
+  text-align: center;
+
+}
+
+/* learn more */
+
+.coins {
+  position: relative;
+}
+
+.coin {
+  position: relative;
+  max-width: 80%;
+  margin: 3rem auto -12rem;
+
+}
+
+.coin + .coin {
+  display: none;
+  margin-right: -6rem;
+}
+
+
+/* register */
+
+.register {
+  color: #fff;
+  background-image: url('/dokuwiki/Gamification/images/background1.jpg');
+  background-size: cover;
+}
+
+.title {
+  color: #000080;
+}
+
+.skip {
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Mobile adjustments for indexpage */
+@media (min-width: 550px) {
+  .coin {
+    position: absolute;
+    top: -7rem;
+    right: 3rem;
+    z-index: 3;
+
+  }
+  .coin + .coin {
+    top: -6rem;
+    display: block;
+    max-width: 73.8%;
+    right: 0;
+    z-index: 2;
+    max-height: 150px;
+  }
+}
+
+/* Bigger than 750 */
+@media (min-width: 750px) {
+  .coin {
+    top: -9rem;
+    right: 3rem;
+  }
+  .coin + .coin {
+    top: -3rem;
+    max-height: 200px;
+  }
+}
+
+/* Bigger than 1000 */
+@media (min-width: 1000px) {
+  .coin {
+    top: -9rem;
+  }
+  .coin + .coin {
+    top: -3rem;
+    max-height: 200px;
+  }
+}
+
+
+/* SOMETHING ELSE */

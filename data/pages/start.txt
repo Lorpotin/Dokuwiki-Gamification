@@ -1,0 +1,91 @@
+﻿====== Copypaste Game Code Camp 2014 ======
+
+CPCC2014 is a game development code camp with a twist: Instead of starting from scratch you take existing games and improve them! The theme for modding the games is: Game crossovers, shared achievements and linked games.
+
+Copy+Paste HOWTO: https://www.youtube.com/watch?v=CXfpJCDkkPg
+===== Schedule =====
+
+The Code Camp course consists of two meetups prior to the coding event and the code camp weekend itself
+
+The lectures will be held at Linux class 6218
+
+  * Starting lectures and first meetup Monday 15.9, 14-16.00
+  *   * Starting Lecture slides: https://docs.google.com/presentation/d/1SHxpaY4GmM545mG_1BFnG8Hq62tl0Wd_JqS2G6pLpnY/edit?usp=sharing
+  * Situation report meet on Wednesday 17.9 be, 15-17.00
+  * Code Camp weekend 26.9-28.9 (more details coming soon)
+
+===== Registration =====
+
+Please register through the form [[https://docs.google.com/forms/d/1Sm8GbbGKwLO-xrwoKIGKnolhf1Tm6BY16RXWtZJwWLA/viewform?usp=send_form|Here]]
+
+====== Code Camp Schedule ======
+Code Camp weekend @ Usability Lab 2527 //26.9. - 28.9.2014// \\
+
+^ Time ^ Activity ^
+| Fri 16:00| Launch! |
+| Fri 18:00 | Project Plan Presentations |
+| Sat Whole day | Implementation |
+| Sun 10:00 | Stop Coding, make presentation & update wiki |
+| Sun 12:00 | Project presentations |
+| | ... |
+
+====== Groups ======
+Three to four person groups are recommended
+
+^ Group ^ Game ^ Name 1 ^ Name 2 ^ Name 3 ^ Name 4 ^
+| [[.:grpEx:start|Kurja]]  | Kurja! | Janne Parkkila |
+| [[.:grp1:start|OnTheRun]]  | On The Run | Kalle Kareinen | Tatu Huttunen | Arttu Urpalainen | Esko Naski |
+| [[.:grp0:start|NoTpr0n]]  | NoTpr0n | Hanna Salopaasi | Janne Salopaasi | Antti Herala | Timo Hynninen  |
+| [[.:grp2:start|grp2]]  | Pacman | Juho Juvani | Manuel Delgado Sanchez | Ibrahim Olanigan | Vitor Meneguetti  |
+| [[.:grp3:start|Primal Element]]  | Minority Report | Teemu Kettunen | Markku Painomaa | Anna Osipova | |
+| [[.:grp4:start|SocialGamificationDongle]]  | NoGame  | Janne Tallqvis | Person 2 | Person 3 | Person 4  |
+| [[.:grp5:start|grp5]]  | Team xx | Person 1 | Person 2 | Person 3 | Person 4  |
+| [[.:grp6:start|grp6]]  | Team xx | Person 1 | Person 2 | Person 3 | Person 4 |
+| [[.:grp7:start|grp7]]  | Team xx | Person 1 | Person 2 | Person 3 | Person 4  |
+
+
+====== After Action Report ======
+
+After the codecamp each group is required to write a 5 page report on the same theme as your wiki pages. The goal is to write more detailed description of the project, making process and the end results. Examples of questions
+  * What did we start to do? 
+  * What did we really do? 
+  * What problems did we have? 
+  * What did work and what not? 
+  * What should have been done in another way? 
+
+**Send the reports to Janne Parkkila (first.last@lut.fi) by Sunday 05.10.2014 - 23.59.**
+  * Only add the links to the document. Upload the actual document to wiki page (all you information should be on the wiki pages)
+
+====== Practical Arrangements ======
+
+Codecamp will be held in the Usability Lab 26.-28.9
+
+
+**What are recommended skills for code camp ?**
+
+Basic programming skills and will to learn new things.
+A little bit wacky attitude.
+Knowing the basics of Unity3D is a big plus :-)
+
+**Can I prepare to Code Camp ?**
+
+Yes, and you should! During the code camp we will concentrate on implementing our ideas and connecting the games together. The design phase this time should happen BEFORE the actual codecamp weekend.
+
+**How about sleeping?**
+
+Sleeping on the University premises is not allowed. You can work 24/7 but we highly suggest you spend the night in your own comfortable bed :-)
+
+
+====== Game Cloud coding integration help ======
+
+Coming here soon(ish)
+
+[[copypaste2014:gamecloud|Game cloud coding instructions]]
+
+Instructions on using Gamecloud Dev UI & Integrating with Unity3D 
+
+{{:copypaste2014:instructions_for_using_gamecloud_with_unity.docx|}}
+<AUTHORSTATS> 
+
+
+<AUTHORSTATS 16>

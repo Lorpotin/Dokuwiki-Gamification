@@ -1,0 +1,280 @@
+/* NAVIGATION HEADER */
+
+#nav {
+    margin: 0 0 0 0;
+
+}
+ 
+#nav ul li {
+    display: inline;
+    margin: 0 50px 0 0;
+
+}
+
+#loginBtn {
+  margin: 25px 0px 0px 70px;
+}
+#logoutBtn {
+  margin: 25px 0px 0px 70px;
+}
+
+#regBtn {
+  margin: 25px 0px 0px 0px;
+}
+
+#homeBtn {
+  margin: 25px 0 0 -100px;
+}
+#profileBtn {
+  margin: 25px 0px 0px -60px;
+}
+
+#notificationBtn {
+
+
+  margin-top: 30px;
+  height: 60px;
+
+}
+
+
+.top10list {
+  font-size: 24px;
+  margin: 25px 25px 25px 25px;
+}
+
+#loginForm {
+  margin: 0px 0px 0px 0px;
+}
+#registerForm {
+  margin: 0px 0px 0px 0px;
+}
+#greentick {
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+#goToRegisterPage {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 100px;
+}
+
+.graphClass {
+  margin-top: 25px;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: -55px;
+}
+
+.online {
+  margin-top: 25px;
+}
+
+.onlineUsers {
+  margin-top: 5px;
+  font-size: 20px;
+  color: #33C3F0;
+  transition: all .1s linear;
+}
+
+#chatbox {
+  border-radius: 15px;
+  overflow: auto;
+  border:2px solid #33C3F0;
+  margin-bottom: 10px;
+  height:250px;
+}
+
+#filedrag
+{
+  width: 200px;
+  font-weight: bold;
+  text-align: center;
+  padding: 1em 0;
+  margin: 1em 0;
+  color: #555;
+  border: 2px dashed #555;
+  border-radius: 7px;
+  cursor: default;
+  margin-left: -15px;
+
+}
+
+#filedrag.hover
+{
+  color: #33C3F0;
+  box-shadow: inset 0 3px 4px #888;
+  border-color: #33C3F0;
+  border-style: solid;
+}
+
+#yourregularuploadformId {
+  display: none;
+  margin-right: -10px;
+}
+
+.profilePicClass {
+  max-height: 100px;
+  max-width: 150px;
+}
+
+.myInfo1 {
+  margin-top: -25px;
+}
+
+.myInfo1 h2 {
+  margin-top: 5px;
+  margin-right: 15px;
+  
+}
+
+
+/* whole settings page css in profile */
+.mySettingsToggle {
+  margin-top: 5px;
+  font-size: 24px;
+  position: absolute;
+
+}
+
+/* hidden inputs in profile */
+#hiddenSettings {
+  margin-top: 5px;
+  visibility: hidden;
+}
+
+.settingsInput {
+  text-align: left;
+  position: relative;
+}
+
+#profilePicture {
+  max-height: 125px;
+  max-width: 150px;
+}
+
+.profileinformation {
+  vertical-align: center;
+  text-align: center;
+  font-size: 28px;
+}
+.searchBar {
+  margin-top: 25px;
+  margin-bottom: -15px;
+  width: 200px;
+}
+.searchDisplay {
+  width: 200px;
+  float: right;
+  overflow: hidden;
+  position: absolute;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,1);
+  background-clip: padding-box;
+  margin-top: 2px;
+  border-top-right-radius: 3px; 
+  border-top-left-radius: 3px; 
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  font-size: 18px;
+  text-transform: capitalize;
+  border-left: 4px solid #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.notificationDisplay {
+  width: 185px;
+  float: right;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,1);
+  background-clip: padding-box;
+  margin-top: 2px;
+  border-top-right-radius: 3px; 
+  border-top-left-radius: 3px; 
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  font-size: 18px;
+  text-transform: capitalize;
+  border-left: 4px solid #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+
+#acceptButton {
+  margin-top: -55px;
+}
+.badgeClass {
+  max-width: 75px;
+  margin-top: 10px;
+}
+
+
+@media (min-width: 550px) {
+  .dnd  {
+    max-width: 75px;
+  }
+}
+
+/* Bigger than 750 */
+@media (min-width: 750px) {
+  .dnd  {
+    max-width: 115px;
+  }
+  #loginBtn {
+    max-width: 50px;
+    text-align: left;
+  }
+  #logoutBtn {
+    max-width: 50px;
+    text-align: left;
+  }
+
+  #regBtn {
+    max-width: 50px;
+    text-align: left;
+  }
+
+  #homeBtn {
+    max-width: 50px;
+    text-align: left;
+  }
+  #profileBtn {
+    max-width: 50px;
+    text-align: left;
+  }
+}
+
+/* Bigger than 1000 */
+@media (min-width: 1000px) {
+  .dnd  {
+    max-width: 200px;
+  }
+  #loginBtn {
+    max-width: 150px;
+  }
+  #logoutBtn {
+    max-width: 150px;
+  }
+
+  #regBtn {
+    max-width: 150px;
+  }
+
+  #homeBtn {
+    max-width: 150px;
+  }
+  #profileBtn {
+    max-width: 150px;
+  }
+}
