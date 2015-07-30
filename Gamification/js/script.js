@@ -70,6 +70,11 @@ $(document).ready(function()
         'slow');
    });
 
+   $(document).on("click", "#testButton", function()
+   {
+      testFunction();
+   });
+
    $(document).on("click", "#1monthBtn", function()
    {
       updateGraph("one");
@@ -469,7 +474,7 @@ $(document).ready(function()
          {
             if(returnData.length > 0)
             {
-               $("#onlineHeader").html("Players currently online");   
+               $("#onlineHeader").html("People currently online");   
             }
             for(var i = 0; i < returnData.length; i++)
             {
@@ -592,7 +597,7 @@ $(document).ready(function()
             {
                $("#registerName").css("border-color", "red");
                document.getElementById("greentick").style.display = "none";
-               document.getElementById("registerLabel").innerHTML = "Username was not found!";
+               document.getElementById("registerLabel").innerHTML = "Username was not found!!";
             }
 
             else if(returnData == "match")
@@ -603,7 +608,7 @@ $(document).ready(function()
             }
             else if(returnData == "success")
             {
-               console.log("Onnistuttiin kerrankin.");
+               alert("Account created!");
             }
             else if(returnData == "accountfound")
             {
@@ -611,6 +616,20 @@ $(document).ready(function()
             }
          } 
       });   
+   }
+
+   function testFunction()
+   {
+      $.ajax(
+      {
+         type: "POST",
+         url: "cronJob.php",
+         //dataType: "json",
+         success: function(returnData)
+         {
+            console.log(returnData);
+         }
+      }); 
    }
 
    function getAchievements()

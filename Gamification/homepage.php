@@ -138,7 +138,7 @@
   <div class="row">
     <div class="section online">
       <div class="six columns">
-        <h3 id="onlineHeader">No players currently online</h3>
+        <h3 id="onlineHeader">No people currently online</h3>
           <ul id="onlineList">
 
           </ul>

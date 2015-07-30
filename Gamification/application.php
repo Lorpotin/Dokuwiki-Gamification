@@ -78,9 +78,10 @@ function GetAllUserNames($username)
 {
 	$jsonString = file_get_contents("http://lorpotin.website/Projects/dokuwiki/data.json");
 	$parsedJson = json_decode($jsonString, true);
-	foreach ($parsedJson as $key => $value) 
+	$name = $username;
+	foreach ($parsedJson as $value) 
 	{
-		if($value['user'] == $username && $value['user'] != "")
+		if($value["user"] == $name)
 		{
 			echo true;
 			break;
@@ -88,7 +89,6 @@ function GetAllUserNames($username)
 		else
 		{
 			echo false;
-			break;
 		}
 	}
 
@@ -97,17 +97,34 @@ function validateUserName($username)
 {
 	$jsonString = file_get_contents("http://lorpotin.website/Projects/dokuwiki/data.json");
 	$parsedJson = json_decode($jsonString, true);
-
-	foreach ($parsedJson as $key => $value) 
+	$matchPoints = 0;
+	foreach ($parsedJson as $value) 
 	{
-		if($value['user'] == $username && $value['user'] != "")
+		if($value['user'] == $username)
 		{
-			return true;
+			$matchPoints++;
 		}
-		else
-		{
-			return false;
-		}
+	}
+	return $matchPoints;
+}
+
+function RegisterNewUser($username, $password, $confirmationPw)
+{
+	if($password == "")
+	{
+		echo "empty";
+	}
+	else if($password != $confirmationPw)
+	{
+		echo "match";
+	}
+	else if(validateUserName($username) < 1)
+	{
+		echo "usernameError";
+	}
+	else
+	{
+		createAccount($username, $password);
 	}
 }
 
@@ -132,6 +149,24 @@ function createAccount($username, $password)
 			    setupCookie("oldUser", $username); 
 			}
 			echo "accountfound";
+		}
+		else
+		{
+			$query = "INSERT INTO User (username, password, points, badgesEarned, loginCount, currentlyLoggedIn, profilePicture, firstname, lastname, email, honenumber, description) VALUES ('$username', '$password', '0', '0', '0', 'false', 'null', '', '', '', '', '')";
+			try
+			{
+				$result = $db->prepare($query);
+				$result->execute();
+				if($result)
+				{
+					echo "accountcreated";
+				}
+			}
+			catch(PDOException $e)
+			{
+			    echo "Connection failed: " .$e->getMessage();
+			}
+
 		}
 	}
 	catch(PDOException $e)
@@ -188,25 +223,7 @@ function GetProfilePicture()
 	}
 }
 
-function RegisterNewUser($username, $password, $confirmationPw)
-{
-	if($password == "")
-	{
-		echo "empty";
-	}
-	else if($password != $confirmationPw)
-	{
-		echo "match";
-	}
-	else if(!validateUserName($username))
-	{
-		echo "usernameError";
-	}
-	else
-	{
-		createAccount($username, $password);
-	}
-}
+
 //Login and set currentlyLoggedIn flag to true
 function Login($username, $password)
 {
