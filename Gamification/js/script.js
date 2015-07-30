@@ -102,6 +102,15 @@ $(document).ready(function()
    {
       getFriendRequests(); 
    });
+
+
+   $(document).on("click", "#profileBadge", function()
+   {
+      var badgeID = $(this).attr('uid');
+      achievementDescriptionPopUp(badgeID);
+   });
+
+  
    $(document).on("click", "#acceptBtn", function()
    {
       //retrieve correct name and uid from the script that retrieves friend requests -> send them to acceptRequest, so PHP knows which request you are accepting
@@ -163,6 +172,49 @@ $(document).ready(function()
          close    : function () 
          {
             window.location = "homepage.php";
+         }
+      });
+   }
+
+   function achievementDescriptionPopUp(badgeID)
+   {
+      text = "";
+
+      if(badgeID == 1)
+      {
+         text = "1st edit";
+      }
+      if(badgeID == 2)
+      {
+         text = "10 edits";
+      }
+      if(badgeID == 3)
+      {
+         text = "X edits";
+      }
+      if(badgeID == 4)
+      {
+         text = "X edits";
+      }
+      if(badgeID == 8)
+      {
+         text = "X edits";
+      }
+      if(badgeID == 9)
+      {
+         text = "X edits";
+      }
+
+      $().toastmessage('showToast', {
+         text     :  text,
+         sticky   :  false,
+         stayTime :  750,
+         position : 'top-center',
+         type     : 'notice',
+         closeText: '',
+         close    : function () 
+         {
+            //window.location = "homepage.php";
          }
       });
    }
@@ -645,7 +697,7 @@ $(document).ready(function()
          {
             for(var i = 0; i < returnData.length; i++)
             {
-               $("#achHeader").append("<img class='badgeClass' src=images/Achievements/Badge"+returnData[i].achievementID+".png>").hide().fadeIn(500);
+               $("#achHeader").append("<img id='profileBadge' uid="+returnData[i].achievementID+" class='badgeClass' src=images/Achievements/Badge"+returnData[i].achievementID+".png>").hide().fadeIn(500);
             }
          }
       }); 

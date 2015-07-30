@@ -1,9 +1,6 @@
 <?php
 //Return all users and their points in the database
 
-
-
-
 function GetAllWikiPoints()
 {
 	$db = new PDO('sqlite:userdb.sqlite');

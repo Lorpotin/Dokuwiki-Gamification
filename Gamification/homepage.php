@@ -86,7 +86,7 @@
     <?php if(isset($_SESSION["login_user"])){
     ?>
     <div class="one column">
-      <button id="logoutBtn" class="button-primary">Log Out</button>
+      <button id="logoutBtn" class="button-primary">LogOut</button>
     </div>
     <?php }else {?>
     <div class="one column">

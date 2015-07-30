@@ -284,7 +284,7 @@ catch(PDOException $e)
         {
           $path = "images/Achievements/Badge".$resultArray[$i]["achievementID"].".png";
           ?>
-            <img id="profilePicture" src=<?php echo $path; ?> >
+            <img id="profilePicture" uid="profileBadge" src=<?php echo $path; ?> >
           <?php
         }
         }

@@ -139,16 +139,53 @@
                 
             }
         }
+
+        //Get profile pictures for each friends too with the sql select clause.
         for($i = 0; $i < count($resultArray); $i++)
         {
             if($resultArray[$i]["user1"] != "")
             {
+                $profilePictureArray = array();
+                $username = $resultArray[$i]['user1'];
+                $query = " SELECT profilePicture FROM User WHERE username = '$username' ";
+                $result = $db->prepare($query);
+                $result->execute();
+                if($result)
+                {
+                    while($row = $result->fetch(PDO::FETCH_ASSOC))
+                    {
+                       $profilePic = $row["profilePicture"];
+                       $profilePictureArray[] = array("profilePicture" => $profilePic);
+                    }
+                }
+                else
+                  echo "No image found!";
+
                 echo "<a href=user.php?u=".$resultArray[$i]['user1'].">".$resultArray[$i]['user1']."</a> ";
+                echo "<img class='profilePicClass' src=".$profilePictureArray[0]["profilePicture"].">";
                 echo "<br>";
             }
             if($resultArray[$i]["user2"] != "")
             {
+                $profilePictureArray = array();
+                $username = $resultArray[$i]['user2'];
+                $query = " SELECT profilePicture FROM User WHERE username = '$username' ";
+                $result = $db->prepare($query);
+                $result->execute();
+                if($result)
+                {
+                    while($row = $result->fetch(PDO::FETCH_ASSOC))
+                    {
+                       $profilePic = $row["profilePicture"];
+                       $profilePictureArray[] = array("profilePicture" => $profilePic);
+                    }
+                }
+                else
+                  echo "No image found!";
+
+
                 echo "<a href=user.php?u=".$resultArray[$i]['user2'].">".$resultArray[$i]['user2']."</a> ";
+                echo "<img class='profilePicClass' src=".$profilePictureArray[0]["profilePicture"].">";
                 echo "<br>";
             }
         } 
