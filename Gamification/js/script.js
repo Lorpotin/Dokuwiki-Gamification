@@ -327,19 +327,30 @@ $(document).ready(function()
          type: "GET",
          url: "ajax_handler.php",
          data: dataString,
-         dataType: "json",
+         //dataType: "json",
          success: function(returnData)
          {
-            var arr = [];
-            for(var x in returnData)
+            console.log(returnData);
+            if(returnData == "\r\nnoRequests")
             {
-               arr.push(returnData[x]);
+               $(".notificationDisplay").append("<p class='notificationResults' >No pending requests!</p>");
             }
-            $(".notificationDisplay").append("<p>Your friend requests!</p>");
-            for(var i = 0; i < arr.length; i++)
+            else
             {
-               $(".notificationDisplay").append("<p class='notificationResults' >"+arr[i]['user1']+"</p> <button uid="+arr[i]['id']+" name="+arr[i]['user1']+" id='acceptBtn' class='button-primary'>Accept</button>");
+
+               var arr = [];
+               for(var x in returnData)
+               {
+                  arr.push(returnData[x]);
+               }
+               $(".notificationDisplay").append("<p>Your friend requests!</p>");
+               for(var i = 0; i < arr.length; i++)
+               {
+                  $(".notificationDisplay").append("<p class='notificationResults' >"+arr[i]['user1']+"</p> <button uid="+arr[i]['id']+" name="+arr[i]['user1']+" id='acceptBtn' class='button-primary'>Accept</button>");
+               }
             }
+           
+            
          }
       });
    }

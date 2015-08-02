@@ -235,11 +235,41 @@ function updateDataBase($finalArray)
     	}
     	if($finalArray[$i]["etype"] >= 100)
     	{
-    		
+    		$username = $finalArray[$i]["user"];
+    		if(!getExistingAchievements($username, 10))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '10')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
     	}
     	if($finalArray[$i]["etype"] >= 500)
     	{
-    		
+    		$username = $finalArray[$i]["user"];
+    		if(!getExistingAchievements($username, 11))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '11')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
     	}
     	if($finalArray[$i]["ctype"] >= 1)
     	{
@@ -281,7 +311,22 @@ function updateDataBase($finalArray)
     	}
     	if($finalArray[$i]["ctype"] >= 50)
     	{
-    		
+    		$username = $finalArray[$i]["user"];
+    		if(!getExistingAchievements($username, 3))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '3')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
     	}
     	
     }

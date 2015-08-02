@@ -121,74 +121,81 @@
         <h2 style="color: #33C3F0">Your friends </h2><h2><?php 
         
         //Lets go through the resultArray which consists of logged in user and users that have accepted his friend requests
-        foreach ($resultArray as $index => $data) 
+        if($friendsFound)
         {
+          foreach ($resultArray as $index => $data) 
+          {
 
-            //Check if either of users are the correct user
-            if ($data['user1'] == $_SESSION["login_user"] || $data['user2'] == $_SESSION["login_user"]) 
-            {
-                //When true we individually check if user1 or user 2 is the logged in user, and replace that with an empty line. You cant be friends with yourself!
-                if ($resultArray[$index]["user1"] == $_SESSION["login_user"])
-                {
-                    $resultArray[$index]["user1"] = null;
-                }
-                if ($resultArray[$index]["user2"] == $_SESSION["login_user"])
-                {
-                    $resultArray[$index]["user2"] = null;
-                }
-                
-            }
+              //Check if either of users are the correct user
+              if ($data['user1'] == $_SESSION["login_user"] || $data['user2'] == $_SESSION["login_user"]) 
+              {
+                  //When true we individually check if user1 or user 2 is the logged in user, and replace that with an empty line. You cant be friends with yourself!
+                  if ($resultArray[$index]["user1"] == $_SESSION["login_user"])
+                  {
+                      $resultArray[$index]["user1"] = null;
+                  }
+                  if ($resultArray[$index]["user2"] == $_SESSION["login_user"])
+                  {
+                      $resultArray[$index]["user2"] = null;
+                  }
+                  
+              }
+          }
+
+          //Get profile pictures and points for each friends too with the sql select clause.
+          for($i = 0; $i < count($resultArray); $i++)
+          {
+              if($resultArray[$i]["user1"] != "")
+              {
+                  $profilePictureArray = array();
+                  $username = $resultArray[$i]['user1'];
+                  $query = " SELECT profilePicture, points FROM User WHERE username = '$username' ";
+                  $result = $db->prepare($query);
+                  $result->execute();
+                  if($result)
+                  {
+                      while($row = $result->fetch(PDO::FETCH_ASSOC))
+                      {
+                         $profilePic = $row["profilePicture"];
+                         $points = $row["points"];
+                         $profilePictureArray[] = array("profilePicture" => $profilePic, "points" => $points);
+                      }
+                  }
+                  else
+                    echo "No image found!";
+
+                  echo "<a href=user.php?u=".$resultArray[$i]['user1'].">".$resultArray[$i]['user1']."</a> ";
+                  echo "<img class='profilePicClass' src=".$profilePictureArray[0]["profilePicture"].">";
+                  echo "<h2>".$profilePictureArray[0]["points"]." points</h2>";
+                  echo "<br>";
+              }
+              if($resultArray[$i]["user2"] != "")
+              {
+                  $profilePictureArray = array();
+                  $username = $resultArray[$i]['user2'];
+                  $query = " SELECT profilePicture, points FROM User WHERE username = '$username' ";
+                  $result = $db->prepare($query);
+                  $result->execute();
+                  if($result)
+                  {
+                      while($row = $result->fetch(PDO::FETCH_ASSOC))
+                      {
+                         $profilePic = $row["profilePicture"];
+                         $points = $row["points"];
+                         $profilePictureArray[] = array("profilePicture" => $profilePic, "points" => $points);
+                      }
+                  }
+                  else
+                    echo "No image found!";
+
+
+                  echo "<a href=user.php?u=".$resultArray[$i]['user2'].">".$resultArray[$i]['user2']."</a> ";
+                  echo "<img class='profilePicClass' src=".$profilePictureArray[0]["profilePicture"].">";
+                  echo "<h2>".$profilePictureArray[0]["points"]." points</h2>";
+                  echo "<br>";
+              }
+          } 
         }
-
-        //Get profile pictures for each friends too with the sql select clause.
-        for($i = 0; $i < count($resultArray); $i++)
-        {
-            if($resultArray[$i]["user1"] != "")
-            {
-                $profilePictureArray = array();
-                $username = $resultArray[$i]['user1'];
-                $query = " SELECT profilePicture FROM User WHERE username = '$username' ";
-                $result = $db->prepare($query);
-                $result->execute();
-                if($result)
-                {
-                    while($row = $result->fetch(PDO::FETCH_ASSOC))
-                    {
-                       $profilePic = $row["profilePicture"];
-                       $profilePictureArray[] = array("profilePicture" => $profilePic);
-                    }
-                }
-                else
-                  echo "No image found!";
-
-                echo "<a href=user.php?u=".$resultArray[$i]['user1'].">".$resultArray[$i]['user1']."</a> ";
-                echo "<img class='profilePicClass' src=".$profilePictureArray[0]["profilePicture"].">";
-                echo "<br>";
-            }
-            if($resultArray[$i]["user2"] != "")
-            {
-                $profilePictureArray = array();
-                $username = $resultArray[$i]['user2'];
-                $query = " SELECT profilePicture FROM User WHERE username = '$username' ";
-                $result = $db->prepare($query);
-                $result->execute();
-                if($result)
-                {
-                    while($row = $result->fetch(PDO::FETCH_ASSOC))
-                    {
-                       $profilePic = $row["profilePicture"];
-                       $profilePictureArray[] = array("profilePicture" => $profilePic);
-                    }
-                }
-                else
-                  echo "No image found!";
-
-
-                echo "<a href=user.php?u=".$resultArray[$i]['user2'].">".$resultArray[$i]['user2']."</a> ";
-                echo "<img class='profilePicClass' src=".$profilePictureArray[0]["profilePicture"].">";
-                echo "<br>";
-            }
-        } 
 
 
         ?></h2>

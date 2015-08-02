@@ -71,9 +71,9 @@ function GetWikiActivity($timePeriod)
 		$lineChart->setLegend(array("posts"));
 		$lineChart->setColors(array("ff3344"));
 		$lineChart->setVisibleAxes(array('x','y'));
-		$lineChart->setDataRange(0, 20);
+		$lineChart->setDataRange(0, count($twelveMonthArray) + 10);
 		$lineChart->addAxisRange(0, 1, 30, 1);
-		$lineChart->addAxisRange(1, 0, count($monthArray)  + 25);
+		$lineChart->addAxisRange(1, 0, count($monthArray));
 		$lineChart->setGridLines(33,10);
 		//Muutetaan stringi sellaiseksi, että selain ymmärtää sitä -> muuttaa &(ampersand)-merkit -> &amp;
 	    echo htmlspecialchars_decode($lineChart->getUrl());      
@@ -85,9 +85,9 @@ function GetWikiActivity($timePeriod)
 		$lineChart->setLegend(array("posts"));
 		$lineChart->setColors(array("ff3344"));
 		$lineChart->setVisibleAxes(array('x','y'));
-		$lineChart->setDataRange(0, 20);
+		$lineChart->setDataRange(0, count($twelveMonthArray) + 10);
 		$lineChart->addAxisRange(0, 1, 3, 1);
-		$lineChart->addAxisRange(1, 0, count($threeMonthArray)  + 25);
+		$lineChart->addAxisRange(1, 0, count($threeMonthArray));
 		$lineChart->setGridLines(33,10);
 		//Muutetaan stringi sellaiseksi, että selain ymmärtää sitä -> muuttaa &(ampersand)-merkit -> &amp;
 	    echo htmlspecialchars_decode($lineChart->getUrl());      
@@ -99,9 +99,9 @@ function GetWikiActivity($timePeriod)
 		$lineChart->setLegend(array("posts"));
 		$lineChart->setColors(array("ff3344"));
 		$lineChart->setVisibleAxes(array('x','y'));
-		$lineChart->setDataRange(0, 20);
+		$lineChart->setDataRange(0, count($twelveMonthArray) + 10);
 		$lineChart->addAxisRange(0, 1, 12, 1);
-		$lineChart->addAxisRange(1, 0, count($twelveMonthArray)  + 25);
+		$lineChart->addAxisRange(1, 0, count($twelveMonthArray));
 		$lineChart->setGridLines(33,10);
 		//Muutetaan stringi sellaiseksi, että selain ymmärtää sitä -> muuttaa &(ampersand)-merkit -> &amp;
 	    echo htmlspecialchars_decode($lineChart->getUrl());      

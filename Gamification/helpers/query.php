@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+$friendsFound = false;
 if(isset($_SESSION["login_user"]))
 {
     $db = new PDO('sqlite:userdb.sqlite');
@@ -36,16 +37,23 @@ if(isset($_SESSION["login_user"]))
 
     try
     {
+        $resultArray = array();
         $username = $_SESSION["login_user"];
         $query = "SELECT user1, user2 FROM Friends WHERE User2 = '$username' OR User1 = '$username' AND accepted = '1' ";
         $result = $db->prepare($query);
         $result->execute();
-        while($row = $result->fetch(PDO::FETCH_ASSOC))
+        if($result)
         {
-            $user1 = $row["user1"];
-            $user2 = $row["user2"];
-            $resultArray[] = array("user1" => $user1, "user2" => $user2);
+          $friendsFound = true;
+          while($row = $result->fetch(PDO::FETCH_ASSOC))
+          {
+              $user1 = $row["user1"];
+              $user2 = $row["user2"];
+              $resultArray[] = array("user1" => $user1, "user2" => $user2);
+          }
         }
+        else
+          $friendsFound = false;
     }
     catch(PDOException $e)
     {
