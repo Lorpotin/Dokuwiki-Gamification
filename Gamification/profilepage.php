@@ -166,7 +166,7 @@
 
                   echo "<a href=user.php?u=".$resultArray[$i]['user1'].">".$resultArray[$i]['user1']."</a> ";
                   echo "<img class='profilePicClass' src=".$profilePictureArray[0]["profilePicture"].">";
-                  echo "<h2>".$profilePictureArray[0]["points"]." points</h2>";
+                  //echo "<h2>".$profilePictureArray[0]["points"]." points</h2>";
                   echo "<br>";
               }
               if($resultArray[$i]["user2"] != "")
@@ -191,7 +191,7 @@
 
                   echo "<a href=user.php?u=".$resultArray[$i]['user2'].">".$resultArray[$i]['user2']."</a> ";
                   echo "<img class='profilePicClass' src=".$profilePictureArray[0]["profilePicture"].">";
-                  echo "<h2>".$profilePictureArray[0]["points"]." points</h2>";
+                  //echo "<h2>".$profilePictureArray[0]["points"]." points</h2>";
                   echo "<br>";
               }
           } 

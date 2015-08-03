@@ -160,19 +160,43 @@ function updateDataBase($finalArray)
 	15	1000 sisäänkirjautumista
 	16	Profiilin tiedot päivitetty ja profiilikuva asetettu
 	17	Ensimmäinen kaveri lisätty
-	18	100 pistettä saavutettu
-	19	1000 pistettä saavutettu
-	20	Kaikki saavutukset saavutettu
-	21	Veteraani (liittynyt yli vuosi sitten)
+	18  10 pistettä saavutettu
+	19	100 pistettä saavutettu
+	20	1000 pistettä saavutettu
+	21	Kaikki saavutukset saavutettu
+	22	Veteraani (liittynyt yli vuosi sitten)
 	*/
 	//*********ACHIEVEMENT ID:T*********
 
 	
 	$db = new PDO('sqlite:userdb.sqlite');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //Tähän tietokantahaku tiedoista joita tarvitaan saavutuksia varten. 16. profiilin tiedot, 17. kaveri lisätty, 18->19 pisteiden määrä,
+    //12->15 sisäänkirjautumiset. Näihin saadaan kaikkiin tiedot tietokannasta, jolloin voidaan päivittää sitten saavutustauluun niitä vastaavat saavutukset.
+    try
+    {
+    	$profileDataArray = array();
+	    $query = " SELECT username, points, loginCount FROM User ";
+	    $result = $db->prepare($query);
+	    $result->execute();
+	    if($result)
+	  	{
+			while($row = $result->fetch(PDO::FETCH_ASSOC))
+			{
+			    $username = $row["username"];
+			    $points = $row["points"];
+			    $loginCount = $row["loginCount"];
+			    $profileDataArray[] = array("username" => $username, "points" => $points, "loginCount" => $loginCount);
+			}
+	  	}
+	}
+	catch(PDOException $e)
+	{
+  		echo "Connection failed: " .$e->getMessage();
+	}    
 
-
-	//Tällä saa jo pisteet päivitettyä. Sit vie saavutukset. Osa joudutaan tekemään korkeammalla sovelluskerroksella?, koska sovelluksen sisäisiä saavutuksia.
+	//Tällä saa jo pisteet päivitettyä. Ja saavutukset Osa joudutaan tekemään korkeammalla sovelluskerroksella?, koska sovelluksen sisäisiä saavutuksia.
+	//Tai sitten voidaan hakea tietokannasta esim. sisäänkirjautumisten lkm, ja tallentaa saavutuksiin?
     foreach($finalArray as $value)
     {
     	$username = $value["user"];
@@ -188,7 +212,7 @@ function updateDataBase($finalArray)
       		echo "Connection failed: " .$e->getMessage();
     	}    
     }
-
+    //Käydään läpi dokuwikistä tuleva data, ja päivitetään siitä saavutukset. Alempana käydään läpi tietokannasta (eli clientiltä tuleva data) ja päivitetään siitä saavutukset
     for($i = 0;  $i < count($finalArray); $i++) 
     {
     	//var_dump($finalArray[$i]["etype"]);
@@ -329,6 +353,144 @@ function updateDataBase($finalArray)
     			var_dump("eipäs lisätä.");
     	}
     	
+    }
+    for($i = 0;  $i < count($profileDataArray); $i++) 
+    {
+
+    	if($profileDataArray[$i]["points"] >= 10)
+    	{
+    		$username = $profileDataArray[$i]["username"];
+    		if(!getExistingAchievements($username, 18))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '18')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
+    	}
+    	if($profileDataArray[$i]["points"] >= 100)
+    	{
+    		$username = $profileDataArray[$i]["username"];
+    		if(!getExistingAchievements($username, 19))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '19')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
+    	}
+    	if($profileDataArray[$i]["points"] >= 1000)
+    	{
+    		$username = $profileDataArray[$i]["username"];
+    		if(!getExistingAchievements($username, 20))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '20')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
+    	}
+    	if($profileDataArray[$i]["loginCount"] >= 1)
+    	{
+    		$username = $profileDataArray[$i]["username"];
+    		if(!getExistingAchievements($username, 12))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '12')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
+    	}
+    	if($profileDataArray[$i]["loginCount"] >= 10)
+    	{
+    		$username = $profileDataArray[$i]["username"];
+    		if(!getExistingAchievements($username, 13))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '13')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
+    	}
+    	if($profileDataArray[$i]["loginCount"] >= 100)
+    	{
+    		$username = $profileDataArray[$i]["username"];
+    		if(!getExistingAchievements($username, 14))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '14')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
+    	}
+    	if($profileDataArray[$i]["loginCount"] >= 1000)
+    	{
+    		$username = $profileDataArray[$i]["username"];
+    		if(!getExistingAchievements($username, 15))
+    		{
+	    		try
+	    		{
+		    		$query = "INSERT INTO Achievement (username, achievementID) VALUES ('$username', '15')";
+		    		$result = $db->prepare($query);
+		    		$result->execute();
+	      		}
+		      	catch(PDOException $e)
+		    	{
+		      		echo "Connection failed: " .$e->getMessage();
+		    	}    
+		    }
+		    else
+    			var_dump("eipäs lisätä.");
+    	}
+
     }
 
 	

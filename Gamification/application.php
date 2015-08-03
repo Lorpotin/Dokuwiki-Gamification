@@ -257,7 +257,7 @@ function Login($username, $password)
 			    {      
 			    	setupCookie("oldUser", $username); 
 			    }
-			    $query = "UPDATE User SET currentlyLoggedIn = 'true' WHERE username = '$username'";
+			    $query = "UPDATE User SET currentlyLoggedIn = 'true', loginCount = loginCount + 1 WHERE username = '$username'";
         		$db->exec($query);
 				echo true;
 			}
