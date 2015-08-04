@@ -254,7 +254,7 @@ $(document).ready(function()
    }
 
    //Get all users and their points in the database, to be used in a general top-X list in the front page
-   function getAllPoints()
+   function getAllPoints() 
    {
       var action = "getAllPoints";
       $.ajax(
